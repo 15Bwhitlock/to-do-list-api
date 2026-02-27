@@ -1,17 +1,25 @@
 package com.brayden.todolistapi.dto;
 
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-// Switched from @Getter/@Setter to @Data for simpler test setup in the test files.
-//@Getter
-//@Setter
 @Data
 public class TaskRequestDTO {
+    @NotBlank
+    @Size(max = 255)
     private String title;
+
+    @Size(max = 5000)
     private String description;
-    private String priority_level;
-    private Date due_date;
-    private Boolean is_completed;
+
+    @NotNull
+    @Min(1)
+    @Max(5)
+    private Integer priorityLevel;
+
+    private LocalDate dueDate;
+
+    private Boolean isCompleted;
 }

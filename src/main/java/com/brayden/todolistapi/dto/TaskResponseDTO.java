@@ -2,17 +2,17 @@ package com.brayden.todolistapi.dto;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-// Switched from @Getter/@Setter to @Data for simpler test setup in the test files.
-//@Getter
-//@Setter
 @Data
 public class TaskResponseDTO {
     private String id;
     private String title;
     private String description;
-    private String priority_level;
-    private Date due_date;
-    private Boolean is_completed;
+    private Integer priorityLevel;
+    private LocalDate dueDate;
+    private Boolean isCompleted;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }
