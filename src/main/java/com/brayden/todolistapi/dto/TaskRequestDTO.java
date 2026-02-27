@@ -19,6 +19,9 @@ public class TaskRequestDTO {
     @Max(5)
     private Integer priorityLevel;
 
+    @Pattern(regexp = "PENDING|IN_PROGRESS|COMPLETED")
+    private String status;
+
     private LocalDate dueDate;
 
     private Boolean isCompleted;

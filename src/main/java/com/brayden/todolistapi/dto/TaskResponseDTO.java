@@ -11,6 +11,7 @@ public class TaskResponseDTO {
     private String title;
     private String description;
     private Integer priorityLevel;
+    private String status;
     private LocalDate dueDate;
     private Boolean isCompleted;
     private LocalDateTime createdAt;

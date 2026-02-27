@@ -23,6 +23,9 @@ public class Task {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @Column(nullable = false, length = 20)
+    private String status = "PENDING";
+
     @Column(name = "priority_level", nullable = false)
     private Integer priorityLevel;
 
@@ -45,6 +48,9 @@ public class Task {
         updatedAt = now; // same as createdAt
         if (isCompleted == null) {
             isCompleted = false; // sets all new tasks as not completed
+        }
+        if (status == null) {
+            status = "PENDING";
         }
     }
 
