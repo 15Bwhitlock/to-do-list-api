@@ -9,6 +9,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -29,9 +31,10 @@ public class TaskControllerImpl implements TaskController {
     @PostMapping
     @Operation(summary = "Create a new task")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Task created"),
+            @ApiResponse(responseCode = "201", description = "Task created"),
             @ApiResponse(responseCode = "400", description = "Invalid request")
     })
+    @ResponseStatus(HttpStatus.CREATED)
     public TaskResponseDTO createTask(@Valid @RequestBody TaskRequestDTO task) {
         return taskService.createTask(task);
     }

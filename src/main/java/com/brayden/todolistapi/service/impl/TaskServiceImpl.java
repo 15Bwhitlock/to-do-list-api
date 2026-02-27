@@ -38,6 +38,9 @@ public class TaskServiceImpl implements TaskService {
         validateTaskPayload(task);
         validateStatus(task.getStatus());
         Task model = MapperTask.dtoRequestToModel(task);
+        if (model.getStatus() != null && !model.getStatus().isBlank()) {
+            model.setStatus(model.getStatus().toUpperCase());
+        }
         Task savedTask = taskRepository.save(model);
         return MapperTask.modelToResponseDto(savedTask);
     }
@@ -123,8 +126,12 @@ public class TaskServiceImpl implements TaskService {
             existingTask.setDescription(task.getDescription());
             existingTask.setPriorityLevel(task.getPriorityLevel());
             existingTask.setDueDate(task.getDueDate());
-            existingTask.setIsCompleted(task.getIsCompleted());
-            existingTask.setStatus(task.getStatus());
+            if (task.getIsCompleted() != null) {
+                existingTask.setIsCompleted(task.getIsCompleted());
+            }
+            if (task.getStatus() != null && !task.getStatus().isBlank()) {
+                existingTask.setStatus(task.getStatus().toUpperCase());
+            }
             Task updatedTask = taskRepository.save(existingTask);
             return MapperTask.modelToResponseDto(updatedTask);
         });
