@@ -1,4 +1,4 @@
-package com.brayden.firstrestapibooks.exception;
+package com.brayden.todolistapi.exception;
 
 import lombok.Builder;
 import lombok.Data;
