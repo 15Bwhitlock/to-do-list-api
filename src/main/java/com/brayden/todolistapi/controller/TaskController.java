@@ -1,5 +1,5 @@
 package com.brayden.todolistapi.controller;
 
-public class ListController {
+public class TaskController {
 
 }
